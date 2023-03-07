@@ -1,0 +1,23 @@
+Here’s a detailed explanation of the code:
+
+import sys - This line imports the sys module which provides access to some variables used or maintained by the interpreter and to functions that interact strongly with the interpreter.
+
+import logging - This line imports the logging module which defines functions and classes which implement a flexible event logging system for applications and libraries.
+
+def error_message_details(error, error_detail:sys): - This line defines a function named error_message_details that takes in two arguments: an error message and error details.
+
+_, _, exc_tb = error_detail.exc_info() - This line uses the exc_info() method from the sys module to get information about the most recent exception caught by an except clause in the current stack frame or in an older stack frame. The method returns a tuple containing three values: type, value and traceback. In this case, only the traceback is needed so it is assigned to the variable exc_tb.
+
+file_name = exc_tb.tb_frame.f_code.co_filename - This line gets the file name where the exception occurred from the traceback object.
+
+The next line defines a formatted string for an error message that includes information about where in the script (file name and line number) and what (error message) caused an error.
+
+The function then returns this formatted error message.
+
+8-9. The next two lines define a custom exception class named CustomException. It inherits from Python’s built-in Exception class.
+
+10-11. The constructor (__init__) of this class takes in two arguments: an error message and error details (of type sys). It calls its parent’s constructor (super().__init__(error_message)) with this error message as its argument.
+
+12-13. Then it calls on our previously defined function (error_message_details) to format this error message with additional details such as file name and line number where it occurred before assigning it to its instance variable (self.error_message).
+
+14-15. Finally, we override Python’s built-in string representation method (__str__) for our custom exception class so that when we print instances of our custom exception class they display our formatted error message instead of just their default string representation.
